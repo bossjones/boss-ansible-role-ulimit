@@ -1,0 +1,22 @@
+---
+
+# https://serverfault.com/questions/122679/how-do-ulimit-n-and-proc-sys-fs-file-max-differ
+# file-max is the maximum File Descriptors (FD) enforced on a kernel level, which cannot be surpassed by all processes without increasing. The ulimit is enforced on a process level, which can be less than the file-max.
+
+- name: Set system limit fs.file-max
+  sysctl:
+    name: fs.file-max
+    value: "{{ boss__global_file_max_limit }}"
+    state: present
+  tags: installation
+
+- lineinfile:
+    path: '{{boss__ulimit_config_location}}'
+    regexp: "{{item.0}}"
+    line: "{{item.1}}"
+    state: present
+    insertbefore: "^\\#\\*"
+  with_together:
+    - "{{boss__reg_expression}}"
+    - "{{boss__insertvalue}}"
+  become: yes

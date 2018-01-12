@@ -36,3 +36,11 @@ Author Information
 ------------------
 
 An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+
+
+INSPIRATION
+--------------------
+https://github.com/picotrading/ansible-ulimit
+
+
+FOR LEARNING PURPOSES ONLY!

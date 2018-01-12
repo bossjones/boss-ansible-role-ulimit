@@ -1,0 +1,8 @@
+---
+
+- name: Create ulimit configuration
+  template:
+    src: limits.conf.j2
+    dest: "{{ boss__ulimit_config_location }}"
+  tags:
+    - ulimit_config
