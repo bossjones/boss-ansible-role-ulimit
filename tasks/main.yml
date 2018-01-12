@@ -1,2 +1,7 @@
 ---
 # tasks file for boss-ansible-role-ulimit
+
+# https://github.com/asukakenji/performance-tuning/wiki/Too-many-open-files---Open-files-limit
+
+- name: regex ulimit setup
+  include: reg_expression.yml

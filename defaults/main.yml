@@ -1,2 +1,33 @@
 ---
 # defaults file for boss-ansible-role-ulimit
+# SOURCE: https://github.com/picotrading/ansible-ulimit/blob/master/defaults/main.yaml
+
+# Default ulimit configuration
+boss__ulimit_config: []
+
+# EXAMPLE CONFIG
+# boss__ulimit_config:
+#       - domain: '*'
+#         type: soft
+#         item: core
+#         value: 0
+#       - domain: '*'
+#         type: hard
+#         item: rss
+#         value: 10000
+
+# Default limits.conf location
+boss__ulimit_config_location: /etc/security/limits.conf
+
+boss__ulimit_file_or_regex: 'file'
+
+boss__reg_expression:
+  - ".*hard.*memlock.*unlimited"
+  - ".*soft.*memlock.*unlimited"
+  - ".*hard.*nofile.*65536"
+boss__insertvalue:
+  - "* hard memlock unlimited"
+  - "* soft memlock unlimited"
+  - "* hard nofile 65536"
+
+boss__global_file_max_limit: 65536
